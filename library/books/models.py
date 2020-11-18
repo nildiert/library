@@ -8,6 +8,9 @@ class Author(models.Model):
     birthdate = models.DateField()
     nationality = models.CharField(max_length=100)
     occupation = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.name
 
 class Editorial(models.Model):
     name = models.CharField(max_length=50)
@@ -15,6 +18,9 @@ class Editorial(models.Model):
     campus = models.CharField(max_length=50)
     employees = models.IntegerField()
     website = models.URLField(max_length=200)
+    
+    def __str__(self):
+        return self.name
 
 class Book(models.Model):
     title = models.CharField(max_length=50)
@@ -28,3 +34,4 @@ class Book(models.Model):
 
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     editorial = models.ForeignKey(Editorial, on_delete=models.CASCADE)
+    

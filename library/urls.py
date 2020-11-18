@@ -19,9 +19,13 @@ from django.conf.urls import include
 from rest_framework import routers
 from library.users import views
 from .users.views import UserViewSet, GetAuthToken
+from .books.views import BookViewSet, AuthorViewSet, EditorialViewSet
 
 router = routers.DefaultRouter()
 router.register('users', UserViewSet)
+router.register('books', BookViewSet)
+router.register('authors', AuthorViewSet)
+router.register('editorials', EditorialViewSet)
 
 
 urlpatterns = [
