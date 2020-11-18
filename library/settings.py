@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     # Local Apps
-    'library.core',
+    'library.users',
 ]
 
 REST_FRAMEWORK = {
