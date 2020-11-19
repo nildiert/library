@@ -10,6 +10,12 @@ class BookViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    
+    def create(self, request, *args, **kwargs):
+        author_id = request.data.get('author').split('/')[-2]
+        author = Author.objects.get(id=author_id)
+        # print(author.email)
+        return super(BookViewSet, self).create(request, *args, **kwargs)
 
 
 class AuthorViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
