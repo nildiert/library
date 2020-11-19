@@ -7,9 +7,6 @@ class AuthorSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['id','name', 'birth', 'birthdate', 'nationality', 'occupation', 'email']
 
 class BookSerializer(serializers.HyperlinkedModelSerializer):
-    # author = serializers.HyperlinkedRelatedField(many=False,
-    #                                              view_name='author-detail',
-    #                                              read_only=True)
     class Meta:
         model = Book
         fields = ['id', 'title', 'publish_date', 'language', 'abstract',

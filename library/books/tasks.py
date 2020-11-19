@@ -4,14 +4,6 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
-
-
-@shared_task
-def sleepy(duration):
-    sleep(duration)
-    return None
-
-    
 @shared_task
 def send_email_task(author, data):
     subject = f'Hello {author.name}! We have added your book to our database'

@@ -8,7 +8,7 @@ from .tasks import send_email_task
 
 
 class BookViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     

@@ -14,4 +14,3 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'niljordan23@gmail.com'
 EMAIL_HOST_PASSWORD = 'tgmkmutgcknbsrlp'
 EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = True
