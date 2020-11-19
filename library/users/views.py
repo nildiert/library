@@ -10,7 +10,7 @@ from rest_framework import viewsets
 from .serializers import UserSerializer
 
 
-
+# http://www.cdrf.co/3.9/rest_framework.mixins/CreateModelMixin.html
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer

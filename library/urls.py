@@ -16,22 +16,30 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
-from rest_framework.routers import DefaultRouter
 from library.users import views
 from .users.views import UserViewSet, GetAuthToken
 from .books.views import BookViewSet, AuthorViewSet, EditorialViewSet
 from rest_framework_extensions.mixins import NestedViewSetMixin
+from rest_framework_extensions.routers import NestedRouterMixin
+from rest_framework_nested import routers
+from django.conf.urls import url 
 
-router = DefaultRouter()
-router.register('users', UserViewSet)
+router = routers.SimpleRouter()
+router.register(r'authors', AuthorViewSet)
+
+authors_router = routers.NestedSimpleRouter(router, r'authors', lookup='author')
+authors_router.register(r'books', BookViewSet, basename='author-books')
+
+
 router.register('books', BookViewSet)
-router.register('authors', AuthorViewSet)
 router.register('editorials', EditorialViewSet)
 
+# authors_router.register('authors', AuthorViewSet)
 
 urlpatterns = [
     path('hello/', views.HelloView.as_view(), name='hello'),
     path('api-token-auth/', GetAuthToken.as_view()),
     path('admin/', admin.site.urls),
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    url(r'^', include(authors_router.urls)),
 ]
