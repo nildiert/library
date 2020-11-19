@@ -22,3 +22,11 @@ class EditorialViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     queryset = Editorial.objects.all()
     serializer_class = EditorialSerializer    
+
+class AuthorBooksViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = BookSerializer
+    def get_queryset(self):
+        return Book.objects.filter(author=self.kwargs['author_pk'])
+    
+    

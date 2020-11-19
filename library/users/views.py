@@ -6,12 +6,15 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework import viewsets
+from rest_framework.mixins import CreateModelMixin
+from rest_framework.viewsets import GenericViewSet
+
 
 from .serializers import UserSerializer
 
 
 # http://www.cdrf.co/3.9/rest_framework.mixins/CreateModelMixin.html
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(CreateModelMixin, GenericViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
