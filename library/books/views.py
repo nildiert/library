@@ -12,16 +12,18 @@ from rest_framework_extensions.mixins import NestedViewSetMixin
 
 
 class BookViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
 
 class AuthorViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
     
     
 class EditorialViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+    permission_classes = (IsAuthenticated,)
     queryset = Editorial.objects.all()
     serializer_class = EditorialSerializer    
