@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf.urls import include
 from library.users import views
 from .users.views import UserViewSet, GetAuthToken
-from .books.views import BookViewSet, AuthorViewSet, EditorialViewSet, AuthorBooksViewSet
+from .library.views import BookViewSet, AuthorViewSet, EditorialViewSet, AuthorBooksViewSet
 from rest_framework_extensions.mixins import NestedViewSetMixin
 from rest_framework_extensions.routers import NestedRouterMixin
 from rest_framework_nested import routers

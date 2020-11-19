@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '72fslo=0lyqzsx)l&@9y*k4@!$!rp80f!^2+p9ru1%t!k%5gch'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 DEBUG = True
 
 
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 
     # Local Apps
     'library.users',
-    'library.books',
+    'library.library',
 ]
 
 REST_FRAMEWORK = {
