@@ -23,9 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '72fslo=0lyqzsx)l&@9y*k4@!$!rp80f!^2+p9ru1%t!k%5gch'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+ALLOWED_HOSTS = ['127.0.0.1']
 DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -139,3 +138,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CELERY_BROKER_URL = 'redis://:p7dd595a7e3a9ad5fb15007c5ddece7a3fe5ccff7faaab3f5cb53ea04acd24eb8@ec2-23-23-239-128.compute-1.amazonaws.com:26839'
+
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'niljordan23@gmail.com'
+EMAIL_HOST_PASSWORD = 'tgmkmutgcknbsrlp'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

@@ -38,5 +38,6 @@ urlpatterns = [
     path('hello/', views.HelloView.as_view(), name='hello'),
     path('api-token-auth/', GetAuthToken.as_view()),
     path('admin/', admin.site.urls),
+    path('index/', views.index),
     url(r'^', include(authors_router.urls)),
 ]

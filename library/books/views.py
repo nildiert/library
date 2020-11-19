@@ -4,17 +4,18 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from .serializers import BookSerializer, AuthorSerializer, EditorialSerializer
 from rest_framework_extensions.mixins import NestedViewSetMixin
+from .tasks import send_email_task
 
 
 class BookViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     
     def create(self, request, *args, **kwargs):
         author_id = request.data.get('author').split('/')[-2]
         author = Author.objects.get(id=author_id)
-        # print(author.email)
+        send_email_task(author, request.data)
         return super(BookViewSet, self).create(request, *args, **kwargs)
 
 
