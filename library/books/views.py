@@ -8,18 +8,20 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework import viewsets
 from .serializers import BookSerializer, AuthorSerializer, EditorialSerializer
+from rest_framework_extensions.mixins import NestedViewSetMixin
 
 
-class BookViewSet(viewsets.ModelViewSet):
+class BookViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
 
-class AuthorViewSet(viewsets.ModelViewSet):
+class AuthorViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+    # permission_classes = (IsAuthenticated,)
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
     
     
-class EditorialViewSet(viewsets.ModelViewSet):
+class EditorialViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Editorial.objects.all()
     serializer_class = EditorialSerializer    
