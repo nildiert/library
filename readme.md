@@ -44,10 +44,15 @@ This API Rest is responsible for saving information for a library of books, ther
     cd library/
     ```
 
+    ```
+    $ pwd
+    >> /home/nildiert/delete/library/library
+    ```
+
 * Use the environment:
 
     ```bash
-    source ../../env/bin/activate
+    source ../env/bin/activate
     ```
     
 * Execute celery:
