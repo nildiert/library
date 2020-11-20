@@ -74,6 +74,7 @@ then
 
 
 else
+    echo $#
     echo -e "Please, use this script in this way:\n"
     echo "  Ex:"
     echo "  $ ./install_and_run port_number"
