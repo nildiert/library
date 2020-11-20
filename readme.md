@@ -540,3 +540,244 @@ Referrer-Policy: same-origin
 
 
 
+### BOOKS
+
+### Create a new book
+
+
+#### Request
+
+`POST /books/`
+
+    ```json
+    {
+        "title": "30 Algorithms Every Programmer Should Know",
+        "publish_date": "2020-06-18",
+        "language": "English",
+        "abstract": "Algorithms have always played an important role in both the science and practice of computing. Beyond traditional computing, the ability to use algorithms to solve real-world problems is an important skill that any developer or programmer must have. This book will help you not only to develop the skills to select and use an algorithm to solve real-world problems but also to understand how it works.",
+        "ISBN": "9781789801217",
+        "number_pages": 382,
+        "year": 2020,
+        "author": "http://localhost:8000/authors/1/",
+        "editorial": "http://localhost:8000/editorials/3/"
+    }
+    ```
+
+
+```bash
+curl -i -X POST -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  -d '  { "title": "30 Algorithms Every Programmer Should Know", "publish_date": "2020-06-18", "language": "English", "abstract": "Algorithms have always played an important role in both the science and practice of computing. Beyond traditional computing, the ability to use algorithms to solve real-world problems is an important skill that any developer or programmer must have. This book will help you not only to develop the skills to select and use an algorithm to solve real-world problems but also to understand how it works.", "ISBN": "9781789801217", "number_pages": 382, "year": 2020, "author": "http://localhost:8000/authors/1/", "editorial": "http://localhost:8000/editorials/3/" }' http://localhost:8000/books/
+
+```
+
+
+#### Response
+
+```bash
+HTTP/1.1 201 Created
+Date: Fri, 20 Nov 2020 21:23:16 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Content-Type: application/json
+Vary: Accept
+Allow: GET, POST, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 674
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+{"id":19,"title":"30 Algorithms Every Programmer Should Know","publish_date":"2020-06-18","language":"English","abstract":"Algorithms have always played an important role in both the science and practice of computing. Beyond traditional computing, the ability to use algorithms to solve real-world problems is an important skill that any developer or programmer must have. This book will help you not only to develop the skills to select and use an algorithm to solve real-world problems but also to understand how it works.","ISBN":"9781789801217","number_pages":382,"year":2020,"author":"http://localhost:8000/authors/1/","editorial":"http://localhost:8000/editorials/3/"}
+
+```
+
+
+
+### Get a specific Book
+
+
+#### Request
+
+`GET /books/id/`
+
+
+
+
+```bash
+curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51" http://localhost:8000/books/19/
+
+```
+
+
+#### Response
+
+```bash
+HTTP/1.1 200 OK
+Date: Fri, 20 Nov 2020 21:24:57 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Content-Type: application/json
+Vary: Accept
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 674
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+{"id":19,"title":"30 Algorithms Every Programmer Should Know","publish_date":"2020-06-18","language":"English","abstract":"Algorithms have always played an important role in both the science and practice of computing. Beyond traditional computing, the ability to use algorithms to solve real-world problems is an important skill that any developer or programmer must have. This book will help you not only to develop the skills to select and use an algorithm to solve real-world problems but also to understand how it works.","ISBN":"9781789801217","number_pages":382,"year":2020,"author":"http://localhost:8000/authors/1/","editorial":"http://localhost:8000/editorials/3/"}
+
+```
+
+
+### Get all the books
+
+
+#### Request
+
+`GET /books/`
+
+
+
+```bash
+curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51" http://localhost:8000/books/
+
+
+```
+
+
+#### Response
+
+```bash
+HTTP/1.1 200 OK
+Date: Fri, 20 Nov 2020 21:25:53 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Content-Type: application/json
+Vary: Accept
+Allow: GET, POST, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 1351
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+[{"id":19,"title":"30 Algorithms Every Programmer Should Know","publish_date":"2020-06-18","language":"English","abstract":"Algorithms have always played an important role in both the science and practice of computing. Beyond traditional computing, the ability to use algorithms to solve real-world problems is an important skill that any developer or programmer must have. This book will help you not only to develop the skills to select and use an algorithm to solve real-world problems but also to understand how it works.","ISBN":"9781789801217","number_pages":382,"year":2020,"author":"http://localhost:8000/authors/1/","editorial":"http://localhost:8000/editorials/3/"}]
+
+```
+
+### Update Book
+
+
+#### Request
+
+`PUT /books/id/`
+
+
+```bash
+curl -i -X PUT -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  -d '{"title":"30 Algorithms Every Programmer Should Know","publish_date":"2020-06-18","language":"English","abstract":"Algorithms have always played an important role in both the science and practice of computing. Beyond traditional computing, the ability to use algorithms to solve real-world problems is an important skill that any developer or programmer must have. This book will help you not only to develop the skills to select and use an algorithm to solve real-world problems but also to understand how it works.","ISBN":"9781781581217","number_pages":200,"year":1992,"author":"http://localhost:8000/authors/1/","editorial":"http://localhost:8000/editorials/3/"}' http://localhost:8000/books/19/
+
+```
+
+
+#### Response
+
+```bash
+HTTP/1.1 200 OK
+Date: Fri, 20 Nov 2020 21:28:29 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Content-Type: application/json
+Vary: Accept
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 674
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+{"id":19,"title":"30 Algorithms Every Programmer Should Know","publish_date":"2020-06-18","language":"English","abstract":"Algorithms have always played an important role in both the science and practice of computing. Beyond traditional computing, the ability to use algorithms to solve real-world problems is an important skill that any developer or programmer must have. This book will help you not only to develop the skills to select and use an algorithm to solve real-world problems but also to understand how it works.","ISBN":"9781781581217","number_pages":200,"year":1992,"author":"http://localhost:8000/authors/1/","editorial":"http://localhost:8000/editorials/3/"}
+
+```
+
+
+### Delete book
+
+
+#### Request
+
+`DELETE /editorials/id/`
+
+
+> curl
+
+```bash
+curl -i -X DELETE -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  http://localhost:8000/books/18/
+
+```
+
+
+#### Response
+
+```bash
+HTTP/1.1 204 No Content
+Date: Fri, 20 Nov 2020 21:31:17 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Vary: Accept
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 0
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+```
+
+
+---
+
+
+
+
+
+
+### BOOKS BY AUTHOR
+
+
+
+### Get all the books by author
+
+
+#### Request
+
+`GET /authors/id/books/`
+
+
+
+```bash
+curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51" http://localhost:8000/authors/1/books/
+
+
+```
+
+
+#### Response
+
+```bash
+HTTP/1.1 200 OK
+Date: Fri, 20 Nov 2020 21:34:25 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Content-Type: application/json
+Vary: Accept
+Allow: GET, POST, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 676
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+[{"id":19,"title":"30 Algorithms Every Programmer Should Know","publish_date":"2020-06-18","language":"English","abstract":"Algorithms have always played an important role in both the science and practice of computing. Beyond traditional computing, the ability to use algorithms to solve real-world problems is an important skill that any developer or programmer must have. This book will help you not only to develop the skills to select and use an algorithm to solve real-world problems but also to understand how it works.","ISBN":"9781781581217","number_pages":200,"year":1992,"author":"http://localhost:8000/authors/1/","editorial":"http://localhost:8000/editorials/3/"}]
+
+```
+
+
+
+
+
+## Author
+
+Nildiert Jimenez Jaramillo
+
+## Changelog
+
+20 Nov - 2020. Creation
+
