@@ -291,7 +291,7 @@ Referrer-Policy: same-origin
 `PUT /authors/id/`
 
 
-> curl
+
 
 ```bash
 curl -i -X PUT -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  -d '{ "name": "Antonio Mele", "birth": "13 July 2019 United States", "birthdate": "2019-06-13", "nationality": "American","occupation": "certified Google Instructor", "email": "antoniomele@yopmail.com" }' http://localhost:8000/authors/1/
@@ -326,7 +326,6 @@ Referrer-Policy: same-origin
 `DELETE /authors/id/`
 
 
-> curl
 
 ```bash
 curl -i -X DELETE -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  http://localhost:8000/authors/1/
@@ -348,6 +347,196 @@ X-Content-Type-Options: nosniff
 Referrer-Policy: same-origin
 
 ```
+
+---
+
+
+
+### EDITORIALS
+
+### Create a new editorial
+
+
+#### Request
+
+`POST /editorials/`
+
+    ```json
+    {
+        "name": "Packt",
+        "foundation": 2003,
+        "campus": "United Kingdom",
+        "employees": 200,
+        "website": "http://www.packtpub.com/"
+
+    }
+    ```
+
+
+```bash
+curl -i -X POST -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  -d '   {"name": "Packt", "foundation": 2003, "campus": "United Kingdom", "employees": 200, "website": "http://www.packtpub.com/"}' http://localhost:8000/editorials/
+
+```
+
+
+#### Response
+
+```bash
+HTTP/1.1 201 Created
+Date: Fri, 20 Nov 2020 21:05:59 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Content-Type: application/json
+Vary: Accept
+Allow: GET, POST, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 120
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+{"id":3,"name":"Packt","foundation":2003,"campus":"United Kingdom","employees":200,"website":"http://www.packtpub.com/"}
+
+```
+
+---
+
+
+### Get a specific Editorial
+
+
+#### Request
+
+`GET /editorials/id/`
+
+
+
+
+```bash
+curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51" http://localhost:8000/editorials/3/
+
+```
+
+
+#### Response
+
+```bash
+localhost:8000/editorials/3/
+HTTP/1.1 200 OK
+Date: Fri, 20 Nov 2020 21:07:38 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Content-Type: application/json
+Vary: Accept
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 120
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+{"id":3,"name":"Packt","foundation":2003,"campus":"United Kingdom","employees":200,"website":"http://www.packtpub.com/"}
+
+```
+
+
+### Get all the editorials
+
+
+#### Request
+
+`GET /editorials/`
+
+
+
+```bash
+curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51" http://localhost:8000/editorials/
+
+
+```
+
+
+#### Response
+
+```bash
+localhost:8000/editorials/
+HTTP/1.1 200 OK
+Date: Fri, 20 Nov 2020 21:08:27 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Content-Type: application/json
+Vary: Accept
+Allow: GET, POST, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 365
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+[{"id":3,"name":"Packt","foundation":2003,"campus":"United Kingdom","employees":200,"website":"http://www.packtpub.com/"}]
+
+```
+
+### Update Editorial
+
+
+#### Request
+
+`PUT /editorials/id/`
+
+
+```bash
+curl -i -X PUT -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  -d '{"name":"Oreilly","foundation":1999,"campus":"United States","employees":400,"website":"http://www.oreilly.com/"}' http://localhost:8000/editorials/3/
+
+```
+
+
+#### Response
+
+```bash
+HTTP/1.1 200 OK
+Date: Fri, 20 Nov 2020 21:11:07 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Content-Type: application/json
+Vary: Accept
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 194
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+{"id":1,"name":"Antonio Mele","birth":"13 July 2019 United States","birthdate":"2019-06-13","nationality":"American","occupation":"certified Google Instructor","email":"antoniomele@yopmail.com"}
+
+```
+
+
+### Delete Editorial
+
+
+#### Request
+
+`DELETE /editorials/id/`
+
+
+> curl
+
+```bash
+curl -i -X DELETE -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  http://localhost:8000/editorials/1/
+
+```
+
+
+#### Response
+
+```bash
+HTTP/1.1 204 No Content
+Date: Fri, 20 Nov 2020 21:13:27 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Vary: Accept
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 0
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+```
+
+
+---
 
 
 
