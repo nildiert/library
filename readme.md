@@ -41,19 +41,19 @@ This API Rest is responsible for saving information for a library of books, ther
 * Enter the following path:
 
     ```bash
-    cd library/library/
+    cd library/
     ```
 
 * Use the environment:
 
     ```bash
-    source ../env/bin/activate
+    source ../../env/bin/activate
     ```
     
 * Execute celery:
 
     ```bash
-    celery -A library worker --loglevel=info
+    celery -A api worker --loglevel=info
     ```
 
 
