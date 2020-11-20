@@ -210,3 +210,144 @@ Referrer-Policy: same-origin
 {"id":7,"name":"Antonio Mele","birth":"13 July 2019 Colombia","birthdate":"2019-06-13","nationality":"Colombian","occupation":"certified Google Instructor","email":"antoniomele@yopmail.com"}
 
 ```
+
+
+
+### Get a specific Author
+
+
+#### Request
+
+`GET /authors/id/`
+
+
+
+
+```bash
+curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51" http://localhost:8000/authors/1/
+
+```
+
+
+#### Response
+
+```bash
+HTTP/1.1 200 OK
+Date: Fri, 20 Nov 2020 20:39:11 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Content-Type: application/json
+Vary: Accept
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 190
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+{"id":5,"name":"Antonio Mele","birth":"13 July 2019 Colombia","birthdate":"2019-06-13","nationality":"Colombian","occupation":"certified Google Instructor","email":"antoniomele@yopmail.com"}
+
+```
+
+
+### Get all the Authors
+
+
+#### Request
+
+`GET /authors/`
+
+
+
+```bash
+curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51" http://localhost:8000/authors/
+
+
+```
+
+
+#### Response
+
+```bash
+HTTP/1.1 200 OK
+Date: Fri, 20 Nov 2020 20:41:12 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Content-Type: application/json
+Vary: Accept
+Allow: GET, POST, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 953
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+
+[{"id":1,"name":"Antonio Mele","birth":"13 July 2019 Colombia","birthdate":"2019-06-13","nationality":"Colombian","occupation":"certified Google Instructor","email":"antoniomele@yopmail.com"}]
+
+```
+
+### Update Author
+
+
+#### Request
+
+`PUT /authors/id/`
+
+
+> curl
+
+```bash
+curl -i -X PUT -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  -d '{ "name": "Antonio Mele", "birth": "13 July 2019 United States", "birthdate": "2019-06-13", "nationality": "American","occupation": "certified Google Instructor", "email": "antoniomele@yopmail.com" }' http://localhost:8000/authors/1/
+
+```
+
+
+#### Response
+
+```bash
+HTTP/1.1 200 OK
+Date: Fri, 20 Nov 2020 20:49:17 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Content-Type: application/json
+Vary: Accept
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 194
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+{"id":1,"name":"Antonio Mele","birth":"13 July 2019 United States","birthdate":"2019-06-13","nationality":"American","occupation":"certified Google Instructor","email":"antoniomele@yopmail.com"}
+
+```
+
+
+### Delete Author
+
+
+#### Request
+
+`DELETE /authors/id/`
+
+
+> curl
+
+```bash
+curl -i -X DELETE -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  http://localhost:8000/authors/1/
+
+```
+
+
+#### Response
+
+```bash
+HTTP/1.1 204 No Content
+Date: Fri, 20 Nov 2020 20:52:08 GMT
+Server: WSGIServer/0.2 CPython/3.8.6
+Vary: Accept
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 0
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+```
+
+
+
