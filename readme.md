@@ -1,5 +1,8 @@
 # Library API
 
+This API Rest is responsible for saving information for a library of books, there you can save and consult information about books, authors and publishers.
+
+
 ## Installation
 
 1. Open two terminals
