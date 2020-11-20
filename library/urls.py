@@ -26,7 +26,7 @@ from django.conf.urls import url
 
 router = routers.DefaultRouter()
 router.register('authors', AuthorViewSet)
-router.register('books', BookViewSet)
+router.register('books', BookViewSet, basename='book')
 router.register('editorials', EditorialViewSet)
 router.register('users', UserViewSet)
 
