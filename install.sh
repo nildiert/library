@@ -12,7 +12,18 @@ echo "*                                              *"
 echo "************************************************"
 echo ""
 echo ""
-pip install -r requirements.txt
+
+python -m pip install --upgrade pip
+pip install django
+pip install djangorestframework
+pip install httpie
+# pip install drf-extensions
+pip install -U git+git://github.com/chibisov/drf-extensions.git@8001a440c7322be26bbe2d16f3a334a8b0b5860b
+pip install pep8
+pip install drf-nested-routers
+pip install redis
+pip install celery
+
 
 echo 
 echo "************************************************"
