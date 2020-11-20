@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
-# python3 -m venv env
-# source env/bin/activate
+python3 -m venv env
+source env/bin/activate
 
 
 echo 
@@ -12,7 +12,7 @@ echo "*                                              *"
 echo "************************************************"
 echo ""
 echo ""
-# pip install requirements.txt
+pip install -r requirements.txt
 
 echo 
 echo "************************************************"
