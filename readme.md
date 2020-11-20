@@ -40,26 +40,26 @@ This API Rest is responsible for saving information for a library of books, ther
 
 * Enter the following path:
 
-    ```bash
-    cd library/
-    ```
+```bash
+cd library/
+```
 
-    ```
-    $ pwd
-    >> /home/nildiert/delete/library/library
-    ```
+```
+$ pwd
+>> /home/nildiert/projects/library/library
+```
 
 * Use the environment:
 
-    ```bash
-    source ../env/bin/activate
-    ```
+```bash
+source ../env/bin/activate
+```
     
 * Execute celery:
 
-    ```bash
-    celery -A api worker --loglevel=info
-    ```
+```bash
+celery -A api worker --loglevel=info
+```
 
 
 
@@ -67,9 +67,9 @@ This API Rest is responsible for saving information for a library of books, ther
 
 After finishing the installation, you can run the tests as follows:
 
-    ```bash
-    python manage.py test
-    ```
+```bash
+python manage.py test
+```
 
 
 
@@ -88,33 +88,26 @@ The REST API to the example app is described below.
 
 `POST /users/`
 
-    ```
-    {
-        "username": "nildiert",
-        "password": "pass123",
-        "first_name"" "nildiert",
-        "last_name": "jimenez"
-        "email": "nildiert@gmail.com"
-    }
-    ```
+```json
+{
+    "username": "nildiert",
+    "password": "pass123",
+    "first_name"" "nildiert",
+    "last_name": "jimenez"
+    "email": "nildiert@gmail.com"
+}
+```
 
-> Local
 
 ```bash
 curl -i -X POST -H "Content-Type: application/json" -d '{"username":"nildiert", "password": "pass123", "email": "nildiert@gmail.com"}' http://localhost:8000/users/
-
-```
-> Deployed app
-
-```bash
-curl -i -X POST -H "Content-Type: application/json" -d '{"username":"nildiert", "password": "pass123", "email": "nildiert@gmail.com"}' http://18.228.221.128:8000/users/
 
 ```
 
 
 ### Response
 
-```
+```json
 HTTP/1.1 201 Created
 Date: Fri, 20 Nov 2020 19:55:40 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -139,12 +132,12 @@ Referrer-Policy: same-origin
 
 `POST /users/`
 
-    ```
-    {
-        "username": "nildiert",
-        "password": "pass123",
-    }
-    ```
+```json
+{
+    "username": "nildiert",
+    "password": "pass123",
+}
+```
 
 > Local
 
@@ -157,7 +150,7 @@ curl -i -X POST -H "Content-Type: application/json" -d '{"username":"user", "pas
 
 ### Response
 
-```bash
+```json
 HTTP/1.1 200 OK
 Date: Fri, 20 Nov 2020 20:10:19 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -182,17 +175,17 @@ Referrer-Policy: same-origin
 
 `POST /authors/`
 
-    ```
-       {
-        "name": "Antonio Mele",
-        "birth": "13 July 2019 Colombia",
-        "birthdate": "2019-06-13",
-        "nationality": "Colombian",
-        "occupation": "certified Google Instructor",
-        "email": "antoniomele@yopmail.com"
+```json
+    {
+    "name": "Antonio Mele",
+    "birth": "13 July 2019 Colombia",
+    "birthdate": "2019-06-13",
+    "nationality": "Colombian",
+    "occupation": "certified Google Instructor",
+    "email": "antoniomele@yopmail.com"
 
-    }
-    ```
+}
+```
 
 
 ```bash
@@ -203,7 +196,7 @@ curl -i -X POST -H "Content-Type: application/json" -H "Authorization: Token 62b
 
 #### Response
 
-```bash
+```json
 HTTP/1.1 201 Created
 Date: Fri, 20 Nov 2020 20:57:26 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -239,7 +232,7 @@ curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929ed
 
 #### Response
 
-```bash
+```json
 HTTP/1.1 200 OK
 Date: Fri, 20 Nov 2020 20:39:11 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -274,7 +267,7 @@ curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929ed
 
 #### Response
 
-```bash
+```json
 HTTP/1.1 200 OK
 Date: Fri, 20 Nov 2020 20:41:12 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -309,7 +302,7 @@ curl -i -X PUT -H "Content-Type: application/json" -H "Authorization: Token 62b0
 
 #### Response
 
-```bash
+```json
 HTTP/1.1 200 OK
 Date: Fri, 20 Nov 2020 20:49:17 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -343,7 +336,7 @@ curl -i -X DELETE -H "Content-Type: application/json" -H "Authorization: Token 6
 
 #### Response
 
-```bash
+```json
 HTTP/1.1 204 No Content
 Date: Fri, 20 Nov 2020 20:52:08 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -369,16 +362,16 @@ Referrer-Policy: same-origin
 
 `POST /editorials/`
 
-    ```
-    {
-        "name": "Packt",
-        "foundation": 2003,
-        "campus": "United Kingdom",
-        "employees": 200,
-        "website": "http://www.packtpub.com/"
+```json
+{
+    "name": "Packt",
+    "foundation": 2003,
+    "campus": "United Kingdom",
+    "employees": 200,
+    "website": "http://www.packtpub.com/"
 
-    }
-    ```
+}
+```
 
 
 ```bash
@@ -389,7 +382,7 @@ curl -i -X POST -H "Content-Type: application/json" -H "Authorization: Token 62b
 
 #### Response
 
-```bash
+```json
 HTTP/1.1 201 Created
 Date: Fri, 20 Nov 2020 21:05:59 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -426,7 +419,7 @@ curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929ed
 
 #### Response
 
-```bash
+```json
 localhost:8000/editorials/3/
 HTTP/1.1 200 OK
 Date: Fri, 20 Nov 2020 21:07:38 GMT
@@ -462,7 +455,7 @@ curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929ed
 
 #### Response
 
-```bash
+```json
 localhost:8000/editorials/
 HTTP/1.1 200 OK
 Date: Fri, 20 Nov 2020 21:08:27 GMT
@@ -495,7 +488,7 @@ curl -i -X PUT -H "Content-Type: application/json" -H "Authorization: Token 62b0
 
 #### Response
 
-```bash
+```json
 HTTP/1.1 200 OK
 Date: Fri, 20 Nov 2020 21:11:07 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -528,7 +521,7 @@ curl -i -X DELETE -H "Content-Type: application/json" -H "Authorization: Token 6
 
 #### Response
 
-```bash
+```json
 HTTP/1.1 204 No Content
 Date: Fri, 20 Nov 2020 21:13:27 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -555,22 +548,22 @@ Referrer-Policy: same-origin
 
 `POST /books/`
 
-    ```
-    {
-        "title": "30 Algorithms Every Programmer Should Know",
-        "publish_date": "2020-06-18",
-        "language": "English",
-        "abstract": "Algorithms have always played an important role in both the science and practice of computing. Beyond traditional computing, the ability to use algorithms to solve real-world problems is an important skill that any developer or programmer must have. This book will help you not only to develop the skills to select and use an algorithm to solve real-world problems but also to understand how it works.",
-        "ISBN": "9781789801217",
-        "number_pages": 382,
-        "year": 2020,
-        "author": "http://localhost:8000/authors/1/",
-        "editorial": "http://localhost:8000/editorials/3/"
-    }
-    ```
+```json
+{
+    "title": "30 Algorithms Every Programmer Should Know",
+    "publish_date": "2020-06-18",
+    "language": "English",
+    "abstract": "Algorithms have always played an important role in both the science and practice of computing. Beyond traditional computing, the ability to use algorithms to solve real-world problems is an important skill that any developer or programmer must have. This book will help you not only to develop the skills to select and use an algorithm to solve real-world problems but also to understand how it works.",
+    "ISBN": "9781789801217",
+    "number_pages": 382,
+    "year": 2020,
+    "author": "http://localhost:8000/authors/1/",
+    "editorial": "http://localhost:8000/editorials/3/"
+}
+```
 
 
-```bash
+```json
 curl -i -X POST -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  -d '  { "title": "30 Algorithms Every Programmer Should Know", "publish_date": "2020-06-18", "language": "English", "abstract": "Algorithms have always played an important role in both the science and practice of computing. Beyond traditional computing, the ability to use algorithms to solve real-world problems is an important skill that any developer or programmer must have. This book will help you not only to develop the skills to select and use an algorithm to solve real-world problems but also to understand how it works.", "ISBN": "9781789801217", "number_pages": 382, "year": 2020, "author": "http://localhost:8000/authors/1/", "editorial": "http://localhost:8000/editorials/3/" }' http://localhost:8000/books/
 
 ```
@@ -578,7 +571,7 @@ curl -i -X POST -H "Content-Type: application/json" -H "Authorization: Token 62b
 
 #### Response
 
-```bash
+```json
 HTTP/1.1 201 Created
 Date: Fri, 20 Nov 2020 21:23:16 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -606,7 +599,7 @@ Referrer-Policy: same-origin
 
 
 
-```bash
+```json
 curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51" http://localhost:8000/books/19/
 
 ```
@@ -614,7 +607,7 @@ curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929ed
 
 #### Response
 
-```bash
+```json
 HTTP/1.1 200 OK
 Date: Fri, 20 Nov 2020 21:24:57 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -640,7 +633,7 @@ Referrer-Policy: same-origin
 
 
 
-```bash
+```json
 curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51" http://localhost:8000/books/
 
 
@@ -649,7 +642,7 @@ curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929ed
 
 #### Response
 
-```bash
+```json
 HTTP/1.1 200 OK
 Date: Fri, 20 Nov 2020 21:25:53 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -673,7 +666,7 @@ Referrer-Policy: same-origin
 `PUT /books/id/`
 
 
-```bash
+```json
 curl -i -X PUT -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  -d '{"title":"30 Algorithms Every Programmer Should Know","publish_date":"2020-06-18","language":"English","abstract":"Algorithms have always played an important role in both the science and practice of computing. Beyond traditional computing, the ability to use algorithms to solve real-world problems is an important skill that any developer or programmer must have. This book will help you not only to develop the skills to select and use an algorithm to solve real-world problems but also to understand how it works.","ISBN":"9781781581217","number_pages":200,"year":1992,"author":"http://localhost:8000/authors/1/","editorial":"http://localhost:8000/editorials/3/"}' http://localhost:8000/books/19/
 
 ```
@@ -681,7 +674,7 @@ curl -i -X PUT -H "Content-Type: application/json" -H "Authorization: Token 62b0
 
 #### Response
 
-```bash
+```json
 HTTP/1.1 200 OK
 Date: Fri, 20 Nov 2020 21:28:29 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -707,7 +700,7 @@ Referrer-Policy: same-origin
 
 
 
-```bash
+```json
 curl -i -X DELETE -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  http://localhost:8000/books/18/
 
 ```
@@ -715,7 +708,7 @@ curl -i -X DELETE -H "Content-Type: application/json" -H "Authorization: Token 6
 
 #### Response
 
-```bash
+```json
 HTTP/1.1 204 No Content
 Date: Fri, 20 Nov 2020 21:31:17 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
@@ -749,7 +742,7 @@ Referrer-Policy: same-origin
 
 
 
-```bash
+```json
 curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51" http://localhost:8000/authors/1/books/
 
 
@@ -758,7 +751,7 @@ curl -i -H 'Accept: application/json' -H "Authorization: Token 62b07a742c77929ed
 
 #### Response
 
-```bash
+```json
 HTTP/1.1 200 OK
 Date: Fri, 20 Nov 2020 21:34:25 GMT
 Server: WSGIServer/0.2 CPython/3.8.6
