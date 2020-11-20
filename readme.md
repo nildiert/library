@@ -80,7 +80,7 @@ The REST API to the example app is described below.
 
 `POST /users/`
 
-    ```json
+    ```
     {
         "username": "nildiert",
         "password": "pass123",
@@ -131,7 +131,7 @@ Referrer-Policy: same-origin
 
 `POST /users/`
 
-    ```json
+    ```
     {
         "username": "nildiert",
         "password": "pass123",
@@ -174,7 +174,7 @@ Referrer-Policy: same-origin
 
 `POST /authors/`
 
-    ```json
+    ```
        {
         "name": "Antonio Mele",
         "birth": "13 July 2019 Colombia",
@@ -361,7 +361,7 @@ Referrer-Policy: same-origin
 
 `POST /editorials/`
 
-    ```json
+    ```
     {
         "name": "Packt",
         "foundation": 2003,
@@ -512,8 +512,6 @@ Referrer-Policy: same-origin
 `DELETE /editorials/id/`
 
 
-> curl
-
 ```bash
 curl -i -X DELETE -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  http://localhost:8000/editorials/1/
 
@@ -549,7 +547,7 @@ Referrer-Policy: same-origin
 
 `POST /books/`
 
-    ```json
+    ```
     {
         "title": "30 Algorithms Every Programmer Should Know",
         "publish_date": "2020-06-18",
@@ -700,7 +698,6 @@ Referrer-Policy: same-origin
 `DELETE /editorials/id/`
 
 
-> curl
 
 ```bash
 curl -i -X DELETE -H "Content-Type: application/json" -H "Authorization: Token 62b07a742c77929eda3fda02646ff9dfc564da51"  http://localhost:8000/books/18/

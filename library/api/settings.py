@@ -1,7 +1,7 @@
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['library'],
+        'DIRS': ['api'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

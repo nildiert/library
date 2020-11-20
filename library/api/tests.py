@@ -2,13 +2,11 @@ import json
 
 from django.contrib.auth.models import User
 from django.urls import reverse
+from library.library.models import Author, Book, Editorial
+from library.library.serializers import AuthorSerializer
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase
-
-from library.library.models import Author, Book, Editorial
-from library.library.serializers import AuthorSerializer
-from django.urls import reverse
 
 
 class RegistrationTestcase(APITestCase):

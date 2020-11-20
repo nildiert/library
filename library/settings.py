@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 
     # Local Apps
     'library.users',
-    'library.library',
+    'library.api',
 ]
 
 REST_FRAMEWORK = {

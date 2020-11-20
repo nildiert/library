@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from .models import Book, Author, Editorial
+
+from .models import Author, Book, Editorial
+
 
 class AuthorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
