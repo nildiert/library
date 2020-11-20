@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from .serializers import BookSerializer, AuthorSerializer, EditorialSerializer
 from rest_framework_extensions.mixins import NestedViewSetMixin
-from .tasks import send_email_task
+from .celery import send_email_task
 
 
 class BookViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
@@ -15,7 +15,7 @@ class BookViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         author_id = request.data.get('author').split('/')[-2]
         author = Author.objects.get(id=author_id)
-        send_email_task(author, request.data)
+        send_email_task.delay(author.name, author.email, request.data)
         return super(BookViewSet, self).create(request, *args, **kwargs)
 
 
