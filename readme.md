@@ -73,7 +73,7 @@ python manage.py test
 
 ## Examples
 
-Yo can see the examples of the api [here]().
+Yo can see the examples of the api [here](https://github.com/nildiert/library/tree/main/examples).
 
 
 
