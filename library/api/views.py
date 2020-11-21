@@ -9,6 +9,9 @@ from .serializers import AuthorSerializer, BookSerializer, EditorialSerializer
 
 
 class BookViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+    """
+    Class to create, get, update and delete books
+    """
     permission_classes = (IsAuthenticated,)
     queryset = Book.objects.all()
     serializer_class = BookSerializer
@@ -21,17 +24,26 @@ class BookViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
 
 
 class AuthorViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+    """
+    Class to create, get, update and to delete Authors
+    """
     permission_classes = (IsAuthenticated,)
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
     
     
 class EditorialViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+    """
+    Class to create, get, update and to delete Editorials
+    """
     permission_classes = (IsAuthenticated,)
     queryset = Editorial.objects.all()
     serializer_class = EditorialSerializer    
 
 class AuthorBooksViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
+    """
+    Class to get all the books by author
+    """
     permission_classes = (IsAuthenticated,)
     serializer_class = BookSerializer
     def get_queryset(self):

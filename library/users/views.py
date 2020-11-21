@@ -14,11 +14,17 @@ from django.core.mail import send_mail
 
 
 class UserViewSet(CreateModelMixin, GenericViewSet):
+    """
+    ViewSet Class for the creation of the users
+    """
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
 class GetAuthToken(ObtainAuthToken):
+    """
+    Class to obtain the authentication token
+    """
     def post(self, request, *args, **kwargs):
         response = super(GetAuthToken, self).post(request, *args, **kwargs)
         token = Token.objects.get(key=response.data['token'])

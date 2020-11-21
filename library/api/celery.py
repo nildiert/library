@@ -29,6 +29,9 @@ def debug_task(self):
 
 @app.task(name='send_email_task')
 def send_email_task(author_name, author_email, data):
+    """
+    Function to send an email to the author of a book
+    """
 
     subject = f'Hello {author_name}! We have added your book to our database'
     html_message = render_to_string('templates/mail_template.html', {**data, 'author': author_name })

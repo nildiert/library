@@ -1,6 +1,9 @@
 from django.db import models
 
 class Author(models.Model):
+    """
+    Author Model
+    """
     name = models.CharField(max_length=50)
     birth = models.CharField(max_length=100)
     birthdate = models.DateField()
@@ -12,6 +15,9 @@ class Author(models.Model):
         return self.name
 
 class Editorial(models.Model):
+    """
+    Editorial Model
+    """
     name = models.CharField(max_length=50)
     foundation = models.IntegerField()
     campus = models.CharField(max_length=50)
@@ -22,6 +28,9 @@ class Editorial(models.Model):
         return self.name
 
 class Book(models.Model):
+    """
+    Book Model
+    """
     title = models.CharField(max_length=50)
     publish_date = models.DateField()
     language = models.CharField(max_length=20)

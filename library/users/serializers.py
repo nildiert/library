@@ -4,6 +4,9 @@ from rest_framework import serializers
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Serializers for User Model
+    """
 
     class Meta:
         model = User

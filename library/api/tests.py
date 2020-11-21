@@ -10,16 +10,27 @@ from rest_framework.test import APITestCase
 
 
 class RegistrationTestcase(APITestCase):
+    """
+    Test that the registry works
+    """
     
     def test_registration(self):
+        """
+        Test to verify that the register works
+        """
         data = {"username": "testcase", "email": "test@localhost.app",
                 "password": "some_strong_psw"}
         response = self.client.post("/users/", data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         
 class AuthenticationTokenTestCase(APITestCase):
-    
+    """
+    Authentication tests
+    """
     def setUp(self):
+        """
+        Main setup for the tests
+        """
         self.data_first_user = {"username":"nildiert", "password":"some-good-password"}
         self.data_second_user = {"username":"nildiert2", "password":"another-good-password"}
         
@@ -30,23 +41,38 @@ class AuthenticationTokenTestCase(APITestCase):
         self.api_authentication()
     
     def api_authentication(self):
+        """
+        Added token in headers
+        """
         self.client.credentials(HTTP_AUTHORIZATION="Token " + self.token.key)
         
     def test_token_authentication_success(self):
+        """
+        Tests to verify that the authentication works
+        """
         response = self.client.post("/api-token-auth/", self.data_first_user)
         response_token = response.data.get('token')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response_token, self.token.key)
     
     def test_token_authentication_failure(self):
+        """
+        Tests to verify that the authentication works
+        """
         response = self.client.post("/api-token-auth/", self.data_second_user)
         response_token = response.data.get('token')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertNotEqual(response_token, self.token.key)
         
 class BookViewSetTestCase(APITestCase):
+    """
+    Books tests
+    """
     
     def setUp(self):
+        """
+        Main setup for the tests
+        """
         self.data_first_user = {"username":"nildiert", "password":"some-good-password"}
         self.data_second_user = {"username":"nildiert2", "password":"another-good-password"}
         
@@ -85,24 +111,39 @@ class BookViewSetTestCase(APITestCase):
         self.api_authentication()
     
     def api_authentication(self):
+        """
+        Adding token in headers
+        """
         self.client.credentials(HTTP_AUTHORIZATION="Token " + self.token.key)
         
     def test_book_authenticated(self):
+        """
+        Tests to verify that the authentication works
+        """
         response = self.client.get('/books/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         
     def test_book_un_authenticated(self):
+        """
+        Tests to verify that the authentication works
+        """
         self.client.force_authenticate(user=None)
         response = self.client.get('/books/')
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         
     def test_book_create(self):
+        """
+        Tests to verify the creation of the books
+        """
 
         response = self.client.post('/books/', data=self.book_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['ISBN'], '9781789955750')
         
     def test_book_detail(self):
+        """
+        Test to verify the detail of one book
+        """
         response = self.client.post('/books/', data=self.book_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)                
         
@@ -111,6 +152,9 @@ class BookViewSetTestCase(APITestCase):
         self.assertEqual(response.data[0].get('title'), "Python Machine Learning - Third Edition")
     
     def test_book_update(self):
+        """
+        Test to verify the updating of a book
+        """
         response = self.client.post('/books/', data=self.book_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         updated_data = { "title": "Python Machine Learning",
@@ -136,6 +180,9 @@ class BookViewSetTestCase(APITestCase):
         self.assertEqual(response.data.get('year'), updated_data.get('year'))
     
     def test_book_delete(self):
+        """
+        Test to verify the deleting of one book
+        """
         response = self.client.post('/books/', data=self.book_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         response = self.client.delete('/books/1/')
@@ -145,8 +192,14 @@ class BookViewSetTestCase(APITestCase):
 
 
 class AuthorViewSetTestCase(APITestCase):
+    """
+    Authors tests
+    """
     
     def setUp(self):
+        """
+        Main setup for the tests
+        """
         self.data_first_user = {"username": "nildiert", "password":"some-good-password"}
         self.data_second_user = {"username": "nildiert2", "password": "another-good-password"}
         self.user = User.objects.create_user(
@@ -166,23 +219,38 @@ class AuthorViewSetTestCase(APITestCase):
         self.api_authentication()
         
     def api_authentication(self):
+        """
+        Adding token in headers
+        """
         self.client.credentials(HTTP_AUTHORIZATION="Token " + self.token.key)
         
     def test_author_authenticated(self):
+        """
+        Tests to verify that the authentication works
+        """        
         response = self.client.get('/authors/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
     
     def test_author_un_authenticated(self):
+        """
+        Tests to verify that the authentication works
+        """        
         self.client.force_authenticate(user=None)
         response = self.client.get('/authors/')
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         
     def test_author_create(self):
+        """
+        Tests to verify the creation of an author
+        """        
         response = self.client.post('/authors/', data=self.author_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['name'], "One author name")
         
     def test_author_detail(self):
+        """
+        Test to verify the detail of an author
+        """        
         response = self.client.post('/authors/', data=self.author_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         response = self.client.get('/authors/', kwargs={'pk': 1})
@@ -190,6 +258,9 @@ class AuthorViewSetTestCase(APITestCase):
         self.assertEqual(response.data[0].get('name'), "One author name")
         
     def test_author_update(self):
+        """
+        Test to verify the updating of an author
+        """        
         response = self.client.post('/authors/', data=self.author_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         updated_data =  {
@@ -211,6 +282,9 @@ class AuthorViewSetTestCase(APITestCase):
         
         
     def test_author_delete(self):
+        """
+        Test to verify the deleting of an author
+        """        
         response = self.client.post('/authors/', data=self.author_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         response = self.client.delete('/authors/1/')
@@ -219,8 +293,14 @@ class AuthorViewSetTestCase(APITestCase):
         self.assertEqual(Author.objects.count(), len(response.data))
         
 class EditorialViewSetTestCase(APITestCase):
+    """
+    Editorials tests
+    """
     
     def setUp(self):
+        """
+        Main setup for the tests
+        """
         self.data_first_user = {"username": "nildiert", "password":"some-good-password"}
         self.data_second_user = {"username": "nildiert2", "password": "another-good-password"}
         self.user = User.objects.create_user(
@@ -239,23 +319,38 @@ class EditorialViewSetTestCase(APITestCase):
         self.api_authentication()
         
     def api_authentication(self):
+        """
+        Adding token in headers
+        """        
         self.client.credentials(HTTP_AUTHORIZATION="Token " + self.token.key)
         
     def test_editorial_authenticated(self):
+        """
+        Tests to verify that the authentication works
+        """
         response = self.client.get('/editorials/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         
     def test_editorial_un_authenticated(self):
+        """
+        Tests to verify that the authentication works
+        """        
         self.client.force_authenticate(user=None)
         response = self.client.get('/editorials/')
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         
     def test_editorial_create(self):
+        """
+        Tests to verify the creation of one editorial
+        """        
         response = self.client.post('/editorials/', data=self.editorial_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['name'], "Packt")
         
     def test_editorial_detail(self):
+        """
+        Test to verify the detail of a
+        """        
         response = self.client.post('/editorials/', data=self.editorial_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         response = self.client.get('/editorials/', kwargs={'pk', 1})
@@ -263,6 +358,9 @@ class EditorialViewSetTestCase(APITestCase):
         self.assertEqual(response.data[0].get('name'), "Packt")
         
     def test_editorial_update(self):
+        """
+        Test to verify the updating of one editorial
+        """        
         response = self.client.post('/editorials/', data=self.editorial_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         updated_data = {
@@ -281,6 +379,9 @@ class EditorialViewSetTestCase(APITestCase):
         self.assertEqual(response.data.get("website"), updated_data.get("website"))
         
     def test_editorial_delete(self):
+        """
+        Test to verify the deleting of one editorial
+        """        
         response = self.client.post('/editorials/', data=self.editorial_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         response = self.client.delete('/editorials/1/')
@@ -289,8 +390,14 @@ class EditorialViewSetTestCase(APITestCase):
         self.assertEqual(Editorial.objects.count(), len(response.data))
         
 class AuthorBooksViewSetTestCase(APITestCase):
+    """
+    Books by author tests
+    """
     
     def setUp(self):
+        """
+        Main setup for the tests
+        """        
         self.data_first_user = {"username": "nildiert", "password":"some-good-password"}
         self.data_second_user = {"username": "nildiert2", "password": "another-good-password"}
         self.user = User.objects.create_user(
@@ -346,18 +453,30 @@ class AuthorBooksViewSetTestCase(APITestCase):
         self.api_authentication()
         
     def api_authentication(self):
+        """
+        Adding token in headers
+        """        
         self.client.credentials(HTTP_AUTHORIZATION="Token " + self.token.key)
         
     def test_author_books_authenticated(self):
+        """
+        Tests to verify that the authentication works
+        """             
         response = self.client.get('/authors/1/books/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         
     def test_author_books_un_authenticated(self):
+        """
+        Tests to verify that the authentication works
+        """             
         self.client.force_authenticate(user=None)
         response = self.client.get('/authors/1/books/')
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         
     def test_author_books_list(self):
+        """
+        Tests to verify the books by author
+        """        
         response = self.client.get('/authors/1/books/')
         self.assertEqual(len(response.data), 0)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
